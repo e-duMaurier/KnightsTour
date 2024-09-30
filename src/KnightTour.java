@@ -19,9 +19,19 @@ public class KnightTour
 
         // Place the counter value to the current knight location in the chessboard array
         chessBoard[currentPosX][currentPosY] = moveCounter;
+        System.out.printf("Move number %1$s : X = %2$s, Y = %3$s %n", moveCounter, currentPosX, currentPosY);
 
-        int[] nextMove = findNextMove(chessBoard, currentPosX, currentPosY);
-        System.out.printf("Next move: X: %d, Y: %d%n", nextMove[0], nextMove[1]);
+        while (moveCounter < boardSize * boardSize)
+        {
+            int[] nextMove = findNextMove(chessBoard, currentPosX, currentPosY);
+            currentPosX = nextMove[0];
+            currentPosY = nextMove[1];
+            chessBoard[currentPosX][currentPosY] = moveCounter;
+            moveCounter++;
+
+            System.out.printf("Move number %1$s : X = %2$s, Y = %3$s %n", moveCounter, currentPosX, currentPosY);
+        }
+
     }
 
     // Checks if the position is on the board, and if the position has not yet been visited
